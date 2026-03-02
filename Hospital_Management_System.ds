@@ -1,0 +1,3904 @@
+/*
+ * Author       : abinayashree2410653_ssn
+ * Generated on : 02-Mar-2026 23:13:12
+ * Version      : 1.0
+ */
+ application "Hospital Management System"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "America/Los_Angeles"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form appointment
+		{
+			displayname = "Appointment"
+			success message = "Appointment Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			patient
+			(
+				type = list	
+				displayname = "Patient"
+				values  = patient.ID
+    			displayformat = [patient_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			doctor
+			(
+				type = list	
+				displayname = "Doctor"
+				values  = doctor.ID
+    			displayformat = [doctor_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			scheduled_date
+			(
+    			type = date
+				displayname = "Scheduled Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			scheduled_time
+			(
+    			type = time
+				displayname = "Scheduled Time"
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			appointment_status
+			(
+				type = picklist
+				displayname = "Appointment Status"
+				values = {"Completed","Confirmed","Canceled","Rescheduled"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			priority
+			(
+				type = picklist
+				displayname = "Priority"
+				values = {"High","Low","Medium","Critical"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			notes
+			(
+    			type = textarea
+				displayname = "Notes"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			confirmed_by
+			(
+    			type = text
+				displayname = "Confirmed By"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form doctor
+		{
+			displayname = "Doctor"
+			success message = "Doctor Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			doctor_name
+			(
+    			type = text
+				displayname = "Doctor Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			specialization
+			(
+				type = picklist
+				displayname = "Specialization"
+				values = {"Neurology","Pediatrics","Orthopedics","General Medicine","Cardiology"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			qualification
+			(
+    			type = text
+				displayname = "Qualification"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_number
+			(
+    			type = phonenumber
+				displayname = "Contact Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = picklist
+				displayname = "Status"
+				values = {"On Leave","Available","In Surgery","On Emergency"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			license_number
+			(
+    			type = text
+				displayname = "License Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			experience_years
+			(
+				type = number
+				displayname = "Experience Years"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			rating
+			(
+				type = number
+				displayname = "Rating"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			availability_schedule
+			(
+    			type = textarea
+				displayname = "Availability Schedule"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form doctor_review
+		{
+			displayname = "Doctor Review"
+			success message = "Doctor Review Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			doctor
+			(
+				type = list	
+				displayname = "Doctor"
+				values  = doctor.ID
+    			displayformat = [doctor_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			patient
+			(
+				type = list	
+				displayname = "Patient"
+				values  = patient.ID
+    			displayformat = [patient_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			rating
+			(
+				type = number
+				displayname = "Rating"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			feedback
+			(
+    			type = textarea
+				displayname = "Feedback"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			review_date
+			(
+    			type = date
+				displayname = "Review Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			is_verified
+			(
+    			type = checkbox
+				displayname = "Is Verified"
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			submitted_by
+			(
+    			type = text
+				displayname = "Submitted By"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			comments
+			(
+    			type = textarea
+				displayname = "Comments"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form emergency_case
+		{
+			displayname = "Emergency Case"
+			success message = "Emergency Case Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			patient
+			(
+				type = list	
+				displayname = "Patient"
+				values  = patient.ID
+    			displayformat = [patient_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			doctor
+			(
+				type = list	
+				displayname = "Doctor"
+				values  = doctor.ID
+    			displayformat = [doctor_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			emergency_level
+			(
+				type = picklist
+				displayname = "Emergency Level"
+				values = {"Level 1","Level 3","Level 2","Level 4"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			reported_time
+			(
+    			type = datetime
+				displayname = "Reported Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			treatment_started
+			(
+    			type = datetime
+				displayname = "Treatment Started"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			treatment_status
+			(
+				type = picklist
+				displayname = "Treatment Status"
+				values = {"Discharged","Deceased","Stable","In Progress"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			response_time
+			(
+    			type = time
+				displayname = "Response Time"
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			assigned_team
+			(
+    			type = text
+				displayname = "Assigned Team"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Emergency Case Reported","Case Assessed","Case Rejected","Treatment Initiated","Case Escalated","Treatment Ongoing","Treatment Delayed","Treatment Completed","Treatment Escalated","Treatment Suspended","Patient Stabilized","Patient Transferred","Patient Discharged","Case Closed"}
+			}
+		}
+		form patient
+		{
+			displayname = "Patient"
+			success message = "Patient Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			patient_name
+			(
+    			type = text
+				displayname = "Patient Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			gender
+			(
+				type = picklist
+				displayname = "Gender"
+				values = {"Male","Female","Other"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_number
+			(
+    			type = phonenumber
+				displayname = "Contact Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			emergency_priority
+			(
+				type = picklist
+				displayname = "Emergency Priority"
+				values = {"High","Low","Medium","Critical"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			address
+			(
+    			type = address
+				displayname = "Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+	     			 visibility = false
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+	     			 visibility = false
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+	     			 visibility = false
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+	     			 visibility = false
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+	     			 visibility = false
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "Latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "Longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			next_appointment_date
+			(
+    			type = date
+				displayname = "Next Appointment Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			treatment_cost
+			(
+				displayname = "Treatment Cost"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			last_visit_date
+			(
+    			type = date
+				displayname = "Last Visit Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			medical_history
+			(
+    			type = textarea
+				displayname = "Medical History"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form treatment_plan
+		{
+			displayname = "Treatment Plan"
+			success message = "Treatment Plan Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			patient
+			(
+				type = list	
+				displayname = "Patient"
+				values  = patient.ID
+    			displayformat = [patient_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			doctor
+			(
+				type = list	
+				displayname = "Doctor"
+				values  = doctor.ID
+    			displayformat = [doctor_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			diagnosis
+			(
+    			type = text
+				displayname = "Diagnosis"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			treatment_details
+			(
+    			type = textarea
+				displayname = "Treatment Details"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			start_date
+			(
+    			type = date
+				displayname = "Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			end_date
+			(
+    			type = date
+				displayname = "End Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = picklist
+				displayname = "Status"
+				values = {"Active","On Hold","Completed"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			cost
+			(
+				displayname = "Cost"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			follow_up_required
+			(
+    			type = checkbox
+				displayname = "Follow Up Required"
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Treatment Plan Created","Treatment Plan Approved","Treatment Plan Draft","Treatment Plan Rejected","Treatment Plan Edited","Treatment Plan In Progress","Treatment Plan Completed","Treatment Plan On Hold","Treatment Plan Modified","Treatment Plan Cancelled","Follow-Up Scheduled","Treatment Plan Closed","Follow-Up Completed","Treatment Plan Reopened"}
+			}
+		}
+		form weekly_treatment_fee
+		{
+			displayname = "Weekly Treatment Fee"
+			success message = "Weekly Treatment Fee Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			patient
+			(
+				type = list	
+				displayname = "Patient"
+				values  = patient.ID
+    			displayformat = [patient_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			fee_amount
+			(
+				displayname = "Fee Amount"
+				type = USD
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			payment_date
+			(
+    			type = date
+				displayname = "Payment Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			is_paid
+			(
+    			type = checkbox
+				displayname = "Is Paid"
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			payment_method
+			(
+				type = picklist
+				displayname = "Payment Method"
+				values = {"Cash","Online","Card"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			processed_by
+			(
+    			type = text
+				displayname = "Processed By"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			fee_cycle
+			(
+				type = radiobuttons
+				displayname = "Fee Cycle"
+				values = {"Monday"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			description
+			(
+    			type = text
+				displayname = "Description"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		list appointment_Report
+		{
+			displayName = "All Appointments"
+			show all rows from appointment    
+			(
+				patient as "Patient"
+				doctor as "Doctor"
+				scheduled_date as "Scheduled Date"
+				scheduled_time as "Scheduled Time"
+				appointment_status as "Appointment Status"
+				priority as "Priority"
+				notes as "Notes"
+				confirmed_by as "Confirmed By"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (appointment_status == "Completed")
+				fields = [appointment_status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (appointment_status == "Rescheduled")
+				fields = [appointment_status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban appointment_by_appointment_status
+		{
+			displayName = "Appointment Statuses"
+			show all rows from appointment    
+			(
+				patient as "Patient"
+				doctor as "Doctor"
+				scheduled_date as "Scheduled Date"
+				scheduled_time as "Scheduled Time"
+				appointment_status as "Appointment Status"
+				priority as "Priority"
+				notes as "Notes"
+				confirmed_by as "Confirmed By"
+			)
+			options
+			(
+	 			display field = appointment_status
+	 		)
+		}
+		list emergency_case_Report
+		{
+			displayName = "All Emergency Cases"
+			show all rows from emergency_case    
+			(
+				patient as "Patient"
+				doctor as "Doctor"
+				emergency_level as "Emergency Level"
+				reported_time as "Reported Time"
+				treatment_started as "Treatment Started"
+				treatment_status as "Treatment Status"
+				response_time as "Response Time"
+				assigned_team as "Assigned Team"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (emergency_level == "Level 2")
+				fields = [emergency_level]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (emergency_level == "Level 4")
+				fields = [emergency_level]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban emergency_case_by_emergency_level
+		{
+			displayName = "Emergency Levels"
+			show all rows from emergency_case    
+			(
+				patient as "Patient"
+				doctor as "Doctor"
+				emergency_level as "Emergency Level"
+				reported_time as "Reported Time"
+				treatment_started as "Treatment Started"
+				treatment_status as "Treatment Status"
+				response_time as "Response Time"
+				assigned_team as "Assigned Team"
+			)
+			options
+			(
+	 			display field = emergency_level
+	 		)
+		}
+		list treatment_plan_Report
+		{
+			displayName = "All Treatment Plans"
+			show all rows from treatment_plan    
+			(
+				patient as "Patient"
+				doctor as "Doctor"
+				diagnosis as "Diagnosis"
+				treatment_details as "Treatment Details"
+				start_date as "Start Date"
+				end_date as "End Date"
+				status as "Status"
+				cost as "Cost"
+				(
+					display = total,average,min,max	
+				)
+				follow_up_required as "Follow Up Required"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (status == "Active")
+				fields = [status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (status == "Completed")
+				fields = [status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (status == "On Hold")
+				fields = [status]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban treatment_plan_by_status
+		{
+			displayName = "Statuses"
+			show all rows from treatment_plan    
+			(
+				patient as "Patient"
+				doctor as "Doctor"
+				diagnosis as "Diagnosis"
+				treatment_details as "Treatment Details"
+				start_date as "Start Date"
+				end_date as "End Date"
+				status as "Status"
+				cost as "Cost"
+				(
+					display = total,average,min,max	
+				)
+				follow_up_required as "Follow Up Required"
+			)
+			options
+			(
+	 			display field = status
+	 		)
+		}
+		list doctor_Report
+		{
+			displayName = "All Doctors"
+			show all rows from doctor    
+			(
+				doctor_name as "Doctor Name"
+				specialization as "Specialization"
+				qualification as "Qualification"
+				contact_number as "Contact Number"
+				status as "Status"
+				license_number as "License Number"
+				experience_years as "Experience Years"
+				rating as "Rating"
+				availability_schedule as "Availability Schedule"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (specialization == "General Medicine")
+				fields = [specialization]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (specialization == "Orthopedics")
+				fields = [specialization]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban doctor_by_specialization
+		{
+			displayName = "Specializations"
+			show all rows from doctor    
+			(
+				doctor_name as "Doctor Name"
+				specialization as "Specialization"
+				qualification as "Qualification"
+				contact_number as "Contact Number"
+				status as "Status"
+				license_number as "License Number"
+				experience_years as "Experience Years"
+				rating as "Rating"
+				availability_schedule as "Availability Schedule"
+			)
+			options
+			(
+	 			display field = specialization
+	 		)
+		}
+		list doctor_review_Report
+		{
+			displayName = "All Doctor Reviews"
+			show all rows from doctor_review    
+			(
+				doctor as "Doctor"
+				patient as "Patient"
+				rating as "Rating"
+				feedback as "Feedback"
+				review_date as "Review Date"
+				is_verified as "Is Verified"
+				submitted_by as "Submitted By"
+				comments as "Comments"
+			)
+		}
+		list patient_Report
+		{
+			displayName = "All Patients"
+			show all rows from patient    
+			(
+				patient_name as "Patient Name"
+				gender as "Gender"
+				contact_number as "Contact Number"
+				emergency_priority as "Emergency Priority"
+				address  as "Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				next_appointment_date as "Next Appointment Date"
+				treatment_cost as "Treatment Cost"
+				(
+					display = total,average,min,max	
+				)
+				last_visit_date as "Last Visit Date"
+				medical_history as "Medical History"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (emergency_priority == "Critical")
+				fields = [emergency_priority]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (emergency_priority == "Medium")
+				fields = [emergency_priority]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban patient_by_emergency_priority
+		{
+			displayName = "Emergency Priorities"
+			show all rows from patient    
+			(
+				patient_name as "Patient Name"
+				gender as "Gender"
+				contact_number as "Contact Number"
+				emergency_priority as "Emergency Priority"
+				address  as "Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				next_appointment_date as "Next Appointment Date"
+				treatment_cost as "Treatment Cost"
+				(
+					display = total,average,min,max	
+				)
+				last_visit_date as "Last Visit Date"
+				medical_history as "Medical History"
+			)
+			options
+			(
+	 			display field = emergency_priority
+	 		)
+		}
+		list weekly_treatment_fee_Report
+		{
+			displayName = "All Weekly Treatment Fees"
+			show all rows from weekly_treatment_fee    
+			(
+				patient as "Patient"
+				fee_amount as "Fee Amount"
+				(
+					display = total,average,min,max	
+				)
+				payment_date as "Payment Date"
+				is_paid as "Is Paid"
+				payment_method as "Payment Method"
+				processed_by as "Processed By"
+				fee_cycle as "Fee Cycle"
+				description as "Description"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (payment_method == "Card")
+				fields = [payment_method]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (payment_method == "Cash")
+				fields = [payment_method]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban weekly_treatment_fee_by_payment_method
+		{
+			displayName = "Payment Methods"
+			show all rows from weekly_treatment_fee    
+			(
+				patient as "Patient"
+				fee_amount as "Fee Amount"
+				(
+					display = total,average,min,max	
+				)
+				payment_date as "Payment Date"
+				is_paid as "Is Paid"
+				payment_method as "Payment Method"
+				processed_by as "Processed By"
+				fee_cycle as "Fee Cycle"
+				description as "Description"
+			)
+			options
+			(
+	 			display field = payment_method
+	 		)
+		}
+	}
+	pages
+	{
+		page DashBoard
+		{
+			displayname = "Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#F97164'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '64%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginTop = '8px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.treatment_plan.cost.sum'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '8px' \n\tmarginTop = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Costs'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '36%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#C75A50'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'shopping-cash-register'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#EEA131'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.patient.treatment_cost.sum'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Treatment Costs'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#BE8127'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'shopping-cash-register'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#00CFA9'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.weekly_treatment_fee.fee_amount.sum'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Fee Amounts'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0BA385'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'shopping-mobile-card'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='26%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#3E99DE'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.appointment.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Appointments'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0E78C9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Grouped_Panel 1'\n \n\t\n\ttitle = 'Priorities'\n\t\n\t\ttitleSize = '15px'\n            boldTitle = 'true'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#F97164'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'clothes-shoe-woman'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tcolor = '#C75A50'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'priority == &quot;High&quot;'\n\t  value = 'thisapp.appointment.priority.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'High'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#EEA131'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'envir-level'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#BE8127'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'priority == &quot;Low&quot;'\n\t  value = 'thisapp.appointment.priority.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Low'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#00CFA9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'design-shapes'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0BA385'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'priority == &quot;Medium&quot;'\n\t  value = 'thisapp.appointment.priority.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Medium'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#3E99DE'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'tech-watch-time'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0E78C9'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'priority == &quot;Critical&quot;'\n\t  value = 'thisapp.appointment.priority.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Critical'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel_Button 1'\n \n\t\n\ttitle = 'Quick Links'\n\t\n\t\ttitleSize = '15px'\n            boldTitle = 'true'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'appointment'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Appointment'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='27%'\n   \t>\n\t<panel elementName='Panel_Button 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'emergency_case'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Emergency Case'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel_Button 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'treatment_plan'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Treatment Plan'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel_Button 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'doctor'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Doctor'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 1'\n\n\t\n\ttitle = 'Status by Cost'\n\t\n\t\ttitleSize = '16px'\n\ttype = 'Bar'\n\txtitle = 'Status'\n\tytitle = 'Cost'\n\tbgColor = 'rgb(255, 255, 255)'\n\ttheme = '#f37d16'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'treatment_plan'\n\txfield = 'status'\n\tyfields = 'sum:cost'\n\t\tDelugeCriteria = 'status is not null &amp;&amp; status != &quot;&quot;'\n/>\n\n</column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 2'\n\n\t\n\ttitle = 'Status by Experience Years'\n\t\n\t\ttitleSize = '16px'\n\ttype = 'Bar'\n\txtitle = 'Status'\n\tytitle = 'Experience Years'\n\tbgColor = 'rgb(255, 255, 255)'\n\ttheme = 'theme1'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'doctor'\n\txfield = 'status'\n\tyfields = 'sum:experience_years'\n\t\tDelugeCriteria = 'status is not null &amp;&amp; status != &quot;&quot;'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'appointment_Report'\n\t\n\t\tiszreport = 'false'\n\t\t\t\t\tzc_AddRec = 'false'\n\t\t\t\t\tzc_EditRec = 'false'\n\t\t\t\t\tzc_Print = 'false'\n\t\t\t\t\tzc_Export = 'false'\n\t\t\t\t\tzc_DelRec = 'false'\n\t\t\t\t\tzc_DuplRec = 'false'\n\t\t\t\t\tzc_Search = 'false'\n\t\t\t\t\tzc_EditBulkRec = 'false'\n\t\t\t\t\tzc_BulkDelete = 'false'\n\t\t\t\t\tzc_BulkDuplicate = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n\n/>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+		workflow
+		{
+
+
+
+
+		blueprint
+		{
+    			emergency_case_management as "Emergency Case Management"
+    			{
+        			type = Blueprint
+        			form = emergency_case
+        			start
+        			{
+            			start stage = "Emergency Case Reported"
+        			}
+        			stages
+        			{
+           			"Emergency Case Reported"
+           			{
+           			}
+           			"Case Assessed"
+           			{
+           			}
+           			"Case Rejected"
+           			{
+           			}
+           			"Treatment Initiated"
+           			{
+           			}
+           			"Case Escalated"
+           			{
+           			}
+           			"Treatment Ongoing"
+           			{
+           			}
+           			"Treatment Delayed"
+           			{
+           			}
+           			"Treatment Completed"
+           			{
+           			}
+           			"Treatment Escalated"
+           			{
+           			}
+           			"Treatment Suspended"
+           			{
+           			}
+           			"Patient Stabilized"
+           			{
+           			}
+           			"Patient Transferred"
+           			{
+           			}
+           			"Patient Discharged"
+           			{
+           			}
+           			"Case Closed"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				assess_emergency as "Assess Emergency Level"
+    				{
+         				type = normal
+         				from stage = "Emergency Case Reported"
+         				to stage = "Case Assessed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				begin_treatment as "Begin Active Treatment"
+    				{
+         				type = normal
+         				from stage = "Treatment Initiated"
+         				to stage = "Treatment Ongoing"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				close_case as "Close Emergency Case"
+    				{
+         				type = normal
+         				from stage = "Patient Discharged"
+         				to stage = "Case Closed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_treatment as "Complete Treatment"
+    				{
+         				type = normal
+         				from stage = "Treatment Ongoing"
+         				to stage = "Treatment Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				confirm_stabilization as "Confirm Patient Stability"
+    				{
+         				type = normal
+         				from stage = "Treatment Completed"
+         				to stage = "Patient Stabilized"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				delay_treatment as "Delay Treatment Due to Resource Constraints"
+    				{
+         				type = normal
+         				from stage = "Treatment Initiated"
+         				to stage = "Treatment Delayed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				discharge_patient as "Discharge Patient"
+    				{
+         				type = normal
+         				from stage = "Treatment Completed"
+         				to stage = "Patient Discharged"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				escalate_case as "Escalate to Higher-Level Team"
+    				{
+         				type = normal
+         				from stage = "Case Assessed"
+         				to stage = "Case Escalated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				escalate_treatment as "Escalate for Critical Condition"
+    				{
+         				type = normal
+         				from stage = "Treatment Ongoing"
+         				to stage = "Treatment Escalated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_case as "Reject Case Due to Non-Emergency"
+    				{
+         				type = normal
+         				from stage = "Emergency Case Reported"
+         				to stage = "Case Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_treatment as "Resume Treatment in New Facility"
+    				{
+         				type = normal
+         				from stage = "Patient Transferred"
+         				to stage = "Treatment Ongoing"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				start_treatment as "Start Treatment"
+    				{
+         				type = normal
+         				from stage = "Case Assessed"
+         				to stage = "Treatment Initiated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				suspend_treatment as "Suspend Treatment Temporarily"
+    				{
+         				type = normal
+         				from stage = "Treatment Ongoing"
+         				to stage = "Treatment Suspended"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				transfer_patient as "Transfer to Ward or Facility"
+    				{
+         				type = normal
+         				from stage = "Treatment Completed"
+         				to stage = "Patient Transferred"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+    			treatment_plan_execution as "Treatment Plan Execution"
+    			{
+        			type = Blueprint
+        			form = treatment_plan
+        			start
+        			{
+            			start stage = "Treatment Plan Created"
+        			}
+        			stages
+        			{
+           			"Treatment Plan Created"
+           			{
+           			}
+           			"Treatment Plan Approved"
+           			{
+           			}
+           			"Treatment Plan Draft"
+           			{
+           			}
+           			"Treatment Plan Rejected"
+           			{
+           			}
+           			"Treatment Plan Edited"
+           			{
+           			}
+           			"Treatment Plan In Progress"
+           			{
+           			}
+           			"Treatment Plan Completed"
+           			{
+           			}
+           			"Treatment Plan On Hold"
+           			{
+           			}
+           			"Treatment Plan Modified"
+           			{
+           			}
+           			"Treatment Plan Cancelled"
+           			{
+           			}
+           			"Follow-Up Scheduled"
+           			{
+           			}
+           			"Treatment Plan Closed"
+           			{
+           			}
+           			"Follow-Up Completed"
+           			{
+           			}
+           			"Treatment Plan Reopened"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				approve_treatment_plan as "Approve Treatment Plan"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan Created"
+         				to stage = "Treatment Plan Approved"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				cancel_treatment as "Cancel Treatment Plan"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan On Hold"
+         				to stage = "Treatment Plan Cancelled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				close_treatment_plan as "Close Treatment Plan"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan Completed"
+         				to stage = "Treatment Plan Closed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_follow_up as "Complete Follow-Up Visit"
+    				{
+         				type = normal
+         				from stage = "Follow-Up Scheduled"
+         				to stage = "Follow-Up Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_treatment as "Mark Treatment as Complete"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan In Progress"
+         				to stage = "Treatment Plan Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_with_hold as "Complete Treatment with Hold"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan On Hold"
+         				to stage = "Treatment Plan Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				edit_treatment_plan as "Edit Treatment Plan"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan Draft"
+         				to stage = "Treatment Plan Edited"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				pause_treatment as "Pause Treatment"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan In Progress"
+         				to stage = "Treatment Plan On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_modified_plan as "Reject Modified Plan"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan Modified"
+         				to stage = "Treatment Plan Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_treatment_plan as "Reject Treatment Plan"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan Created"
+         				to stage = "Treatment Plan Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reopen_treatment as "Reopen Treatment Plan"
+    				{
+         				type = normal
+         				from stage = "Follow-Up Scheduled"
+         				to stage = "Treatment Plan Reopened"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_modified_treatment as "Resume Modified Treatment"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan Modified"
+         				to stage = "Treatment Plan In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_treatment as "Resume Treatment"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan On Hold"
+         				to stage = "Treatment Plan In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				revise_and_resubmit as "Revise and Resubmit"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan Rejected"
+         				to stage = "Treatment Plan Draft"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				save_as_draft as "Save as Draft"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan Created"
+         				to stage = "Treatment Plan Draft"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				schedule_follow_up as "Schedule Follow-Up"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan Completed"
+         				to stage = "Follow-Up Scheduled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				start_treatment as "Start Treatment"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan Approved"
+         				to stage = "Treatment Plan In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				submit_for_approval as "Submit for Approval"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan Draft"
+         				to stage = "Treatment Plan Approved"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				update_treatment_plan as "Update Treatment Plan"
+    				{
+         				type = normal
+         				from stage = "Treatment Plan In Progress"
+         				to stage = "Treatment Plan Modified"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+		}
+
+
+	}
+	share_settings
+	{
+			"Clinic Administrator"
+			{
+				name = "Clinic Administrator"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Oversee daily clinic operations and appointment scheduling \n"
+				ModulePermissions
+				{
+					doctor
+					{
+						enabled= Viewall,Modifyall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							doctor_Report={"View","Edit","Delete"}
+							doctor_by_specialization={"View","Edit","Delete"}
+						}
+					}
+					weekly_treatment_fee
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							weekly_treatment_fee_by_payment_method={"View","Edit","Delete"}
+							weekly_treatment_fee_Report={"View","Edit","Delete"}
+						}
+					}
+					treatment_plan
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							treatment_plan_Report={"View"}
+							treatment_plan_by_status={"View"}
+						}
+					}
+					patient
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							patient_by_emergency_priority={"View"}
+							patient_Report={"View"}
+						}
+					}
+					appointment
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							appointment_by_appointment_status={"View","Edit","Delete"}
+							appointment_Report={"View","Edit","Delete"}
+						}
+					}
+					emergency_case
+					{
+						enabled= Viewall,Modifyall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							emergency_case_by_emergency_level={"View","Edit","Delete"}
+							emergency_case_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Emergency Response Coordinator"
+			{
+				name = "Emergency Response Coordinator"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Respond to emergency cases and assign appropriate medical teams \n"
+				ModulePermissions
+				{
+					doctor
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							doctor_Report={"View"}
+							doctor_by_specialization={"View"}
+						}
+					}
+					appointment
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							appointment_by_appointment_status={"View"}
+							appointment_Report={"View"}
+						}
+					}
+					emergency_case
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							emergency_case_by_emergency_level={"View","Edit","Delete"}
+							emergency_case_Report={"View","Edit","Delete"}
+						}
+					}
+					treatment_plan
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							treatment_plan_Report={"View"}
+							treatment_plan_by_status={"View"}
+						}
+					}
+					patient
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							patient_by_emergency_priority={"View"}
+							patient_Report={"View"}
+						}
+					}
+				}
+			}
+			"Medical Review Officer"
+			{
+				name = "Medical Review Officer"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Review and validate doctor performance through patient feedback and treatment outcomes \n"
+				ModulePermissions
+				{
+					weekly_treatment_fee
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							weekly_treatment_fee_by_payment_method={"View"}
+							weekly_treatment_fee_Report={"View"}
+						}
+					}
+					treatment_plan
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							treatment_plan_Report={"View"}
+							treatment_plan_by_status={"View"}
+						}
+					}
+					doctor_review
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							doctor_review_Report={"View","Edit","Delete"}
+						}
+					}
+					patient
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							patient_by_emergency_priority={"View"}
+							patient_Report={"View"}
+						}
+					}
+				}
+			}
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Doctor Scheduler"
+			{
+				name = "Doctor Scheduler"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Manage and update doctor availability schedules \n"
+				ModulePermissions
+				{
+					doctor
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							doctor_Report={"View","Edit","Delete"}
+							doctor_by_specialization={"View","Edit","Delete"}
+						}
+					}
+					appointment
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							appointment_by_appointment_status={"View","Edit","Delete"}
+							appointment_Report={"View","Edit","Delete"}
+						}
+					}
+					emergency_case
+					{
+						enabled= Viewall,Modifyall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							emergency_case_by_emergency_level={"View","Edit","Delete"}
+							emergency_case_Report={"View","Edit","Delete"}
+						}
+					}
+					treatment_plan
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							treatment_plan_Report={"View"}
+							treatment_plan_by_status={"View"}
+						}
+					}
+				}
+			}
+			"Patient"
+			{
+				name = "Patient"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Book and manage personal appointments with doctors \n"
+				ModulePermissions
+				{
+					weekly_treatment_fee
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							weekly_treatment_fee_by_payment_method={"View"}
+							weekly_treatment_fee_Report={"View"}
+						}
+					}
+					appointment
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							appointment_by_appointment_status={"View","Edit"}
+							appointment_Report={"View","Edit"}
+						}
+					}
+					emergency_case
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							emergency_case_by_emergency_level={"View"}
+							emergency_case_Report={"View"}
+						}
+					}
+					patient
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							patient_by_emergency_priority={"View","Edit","Delete"}
+							patient_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Doctor"
+			{
+				name = "Doctor"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "View assigned appointments and emergency cases \n"
+				ModulePermissions
+				{
+					doctor
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							doctor_Report={"View","Edit"}
+							doctor_by_specialization={"View","Edit"}
+						}
+					}
+					appointment
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							appointment_by_appointment_status={"View","Edit"}
+							appointment_Report={"View","Edit"}
+						}
+					}
+					emergency_case
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							emergency_case_by_emergency_level={"View"}
+							emergency_case_Report={"View"}
+						}
+					}
+					treatment_plan
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							treatment_plan_Report={"Edit"}
+							treatment_plan_by_status={"Edit"}
+						}
+					}
+					patient
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							patient_by_emergency_priority={"View"}
+							patient_Report={"View"}
+						}
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form appointment
+			{
+				label placement = left
+			}
+			form doctor
+			{
+				label placement = left
+			}
+			form doctor_review
+			{
+				label placement = left
+			}
+			form emergency_case
+			{
+				label placement = left
+			}
+			form patient
+			{
+				label placement = left
+			}
+			form treatment_plan
+			{
+				label placement = left
+			}
+			form weekly_treatment_fee
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report appointment_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								patient as "Patient"
+								doctor as "Doctor"
+								scheduled_date as "Scheduled Date"
+								scheduled_time as "Scheduled Time"
+								appointment_status as "Appointment Status"
+								priority as "Priority"
+								notes as "Notes"
+								confirmed_by as "Confirmed By"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								patient as "Patient"
+								doctor as "Doctor"
+								scheduled_date as "Scheduled Date"
+								scheduled_time as "Scheduled Time"
+								appointment_status as "Appointment Status"
+								priority as "Priority"
+								notes as "Notes"
+								confirmed_by as "Confirmed By"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Patient"
+		     				related field = patient
+							fields
+							(
+								patient_name as "Patient Name"
+								gender as "Gender"
+								contact_number as "Contact Number"
+								emergency_priority as "Emergency Priority"
+								address as "Address"
+								next_appointment_date as "Next Appointment Date"
+								treatment_cost as "Treatment Cost"
+								last_visit_date as "Last Visit Date"
+								medical_history as "Medical History"
+							)
+						)
+						datablock3
+						(
+							layout type = -2
+		     				title = "Doctor"
+		     				related field = doctor
+							fields
+							(
+								doctor_name as "Doctor Name"
+								specialization as "Specialization"
+								qualification as "Qualification"
+								contact_number as "Contact Number"
+								status as "Status"
+								license_number as "License Number"
+								experience_years as "Experience Years"
+								rating as "Rating"
+								availability_schedule as "Availability Schedule"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report appointment_by_appointment_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								confirmed_by as "Confirmed By"
+								patient as "Patient"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								patient as "Patient"
+								doctor as "Doctor"
+								scheduled_date as "Scheduled Date"
+								scheduled_time as "Scheduled Time"
+								appointment_status as "Appointment Status"
+								priority as "Priority"
+								notes as "Notes"
+								confirmed_by as "Confirmed By"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report emergency_case_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								patient as "Patient"
+								doctor as "Doctor"
+								emergency_level as "Emergency Level"
+								reported_time as "Reported Time"
+								treatment_started as "Treatment Started"
+								treatment_status as "Treatment Status"
+								response_time as "Response Time"
+								assigned_team as "Assigned Team"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								patient as "Patient"
+								doctor as "Doctor"
+								emergency_level as "Emergency Level"
+								reported_time as "Reported Time"
+								treatment_started as "Treatment Started"
+								treatment_status as "Treatment Status"
+								response_time as "Response Time"
+								assigned_team as "Assigned Team"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Doctor"
+		     				related field = doctor
+							fields
+							(
+								doctor_name as "Doctor Name"
+								specialization as "Specialization"
+								qualification as "Qualification"
+								contact_number as "Contact Number"
+								status as "Status"
+								license_number as "License Number"
+								experience_years as "Experience Years"
+								rating as "Rating"
+								availability_schedule as "Availability Schedule"
+							)
+						)
+						datablock3
+						(
+							layout type = -2
+		     				title = "Patient"
+		     				related field = patient
+							fields
+							(
+								patient_name as "Patient Name"
+								gender as "Gender"
+								contact_number as "Contact Number"
+								emergency_priority as "Emergency Priority"
+								address as "Address"
+								next_appointment_date as "Next Appointment Date"
+								treatment_cost as "Treatment Cost"
+								last_visit_date as "Last Visit Date"
+								medical_history as "Medical History"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report emergency_case_by_emergency_level
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								assigned_team as "Assigned Team"
+								patient as "Patient"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								patient as "Patient"
+								doctor as "Doctor"
+								emergency_level as "Emergency Level"
+								reported_time as "Reported Time"
+								treatment_started as "Treatment Started"
+								treatment_status as "Treatment Status"
+								response_time as "Response Time"
+								assigned_team as "Assigned Team"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report treatment_plan_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								patient as "Patient"
+								doctor as "Doctor"
+								diagnosis as "Diagnosis"
+								treatment_details as "Treatment Details"
+								start_date as "Start Date"
+								end_date as "End Date"
+								status as "Status"
+								cost as "Cost"
+								follow_up_required as "Follow Up Required"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								patient as "Patient"
+								doctor as "Doctor"
+								diagnosis as "Diagnosis"
+								treatment_details as "Treatment Details"
+								start_date as "Start Date"
+								end_date as "End Date"
+								status as "Status"
+								cost as "Cost"
+								follow_up_required as "Follow Up Required"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Doctor"
+		     				related field = doctor
+							fields
+							(
+								doctor_name as "Doctor Name"
+								specialization as "Specialization"
+								qualification as "Qualification"
+								contact_number as "Contact Number"
+								status as "Status"
+								license_number as "License Number"
+								experience_years as "Experience Years"
+								rating as "Rating"
+								availability_schedule as "Availability Schedule"
+							)
+						)
+						datablock3
+						(
+							layout type = -2
+		     				title = "Patient"
+		     				related field = patient
+							fields
+							(
+								patient_name as "Patient Name"
+								gender as "Gender"
+								contact_number as "Contact Number"
+								emergency_priority as "Emergency Priority"
+								address as "Address"
+								next_appointment_date as "Next Appointment Date"
+								treatment_cost as "Treatment Cost"
+								last_visit_date as "Last Visit Date"
+								medical_history as "Medical History"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report treatment_plan_by_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								diagnosis as "Diagnosis"
+								patient as "Patient"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								patient as "Patient"
+								doctor as "Doctor"
+								diagnosis as "Diagnosis"
+								treatment_details as "Treatment Details"
+								start_date as "Start Date"
+								end_date as "End Date"
+								status as "Status"
+								cost as "Cost"
+								follow_up_required as "Follow Up Required"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report doctor_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								doctor_name as "Doctor Name"
+								specialization as "Specialization"
+								qualification as "Qualification"
+								contact_number as "Contact Number"
+								status as "Status"
+								license_number as "License Number"
+								experience_years as "Experience Years"
+								rating as "Rating"
+								availability_schedule as "Availability Schedule"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								doctor_name as "Doctor Name"
+								specialization as "Specialization"
+								qualification as "Qualification"
+								contact_number as "Contact Number"
+								status as "Status"
+								license_number as "License Number"
+								experience_years as "Experience Years"
+								rating as "Rating"
+								availability_schedule as "Availability Schedule"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report doctor_by_specialization
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								doctor_name as "Doctor Name"
+								qualification as "Qualification"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								doctor_name as "Doctor Name"
+								specialization as "Specialization"
+								qualification as "Qualification"
+								contact_number as "Contact Number"
+								status as "Status"
+								license_number as "License Number"
+								experience_years as "Experience Years"
+								rating as "Rating"
+								availability_schedule as "Availability Schedule"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report doctor_review_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								doctor as "Doctor"
+								patient as "Patient"
+								rating as "Rating"
+								feedback as "Feedback"
+								review_date as "Review Date"
+								is_verified as "Is Verified"
+								submitted_by as "Submitted By"
+								comments as "Comments"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								doctor as "Doctor"
+								patient as "Patient"
+								rating as "Rating"
+								feedback as "Feedback"
+								review_date as "Review Date"
+								is_verified as "Is Verified"
+								submitted_by as "Submitted By"
+								comments as "Comments"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Patient"
+		     				related field = patient
+							fields
+							(
+								patient_name as "Patient Name"
+								gender as "Gender"
+								contact_number as "Contact Number"
+								emergency_priority as "Emergency Priority"
+								address as "Address"
+								next_appointment_date as "Next Appointment Date"
+								treatment_cost as "Treatment Cost"
+								last_visit_date as "Last Visit Date"
+								medical_history as "Medical History"
+							)
+						)
+						datablock3
+						(
+							layout type = -2
+		     				title = "Doctor"
+		     				related field = doctor
+							fields
+							(
+								doctor_name as "Doctor Name"
+								specialization as "Specialization"
+								qualification as "Qualification"
+								contact_number as "Contact Number"
+								status as "Status"
+								license_number as "License Number"
+								experience_years as "Experience Years"
+								rating as "Rating"
+								availability_schedule as "Availability Schedule"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report patient_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								patient_name as "Patient Name"
+								gender as "Gender"
+								contact_number as "Contact Number"
+								emergency_priority as "Emergency Priority"
+								address as "Address"
+								next_appointment_date as "Next Appointment Date"
+								treatment_cost as "Treatment Cost"
+								last_visit_date as "Last Visit Date"
+								medical_history as "Medical History"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								patient_name as "Patient Name"
+								gender as "Gender"
+								contact_number as "Contact Number"
+								emergency_priority as "Emergency Priority"
+								address as "Address"
+								next_appointment_date as "Next Appointment Date"
+								treatment_cost as "Treatment Cost"
+								last_visit_date as "Last Visit Date"
+								medical_history as "Medical History"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report patient_by_emergency_priority
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								patient_name as "Patient Name"
+								gender as "Gender"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								patient_name as "Patient Name"
+								gender as "Gender"
+								contact_number as "Contact Number"
+								emergency_priority as "Emergency Priority"
+								address as "Address"
+								next_appointment_date as "Next Appointment Date"
+								treatment_cost as "Treatment Cost"
+								last_visit_date as "Last Visit Date"
+								medical_history as "Medical History"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report weekly_treatment_fee_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								patient as "Patient"
+								fee_amount as "Fee Amount"
+								payment_date as "Payment Date"
+								is_paid as "Is Paid"
+								payment_method as "Payment Method"
+								processed_by as "Processed By"
+								fee_cycle as "Fee Cycle"
+								description as "Description"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								patient as "Patient"
+								fee_amount as "Fee Amount"
+								payment_date as "Payment Date"
+								is_paid as "Is Paid"
+								payment_method as "Payment Method"
+								processed_by as "Processed By"
+								fee_cycle as "Fee Cycle"
+								description as "Description"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Patient"
+		     				related field = patient
+							fields
+							(
+								patient_name as "Patient Name"
+								gender as "Gender"
+								contact_number as "Contact Number"
+								emergency_priority as "Emergency Priority"
+								address as "Address"
+								next_appointment_date as "Next Appointment Date"
+								treatment_cost as "Treatment Cost"
+								last_visit_date as "Last Visit Date"
+								medical_history as "Medical History"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report weekly_treatment_fee_by_payment_method
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								processed_by as "Processed By"
+								description as "Description"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								patient as "Patient"
+								fee_amount as "Fee Amount"
+								payment_date as "Payment Date"
+								is_paid as "Is Paid"
+								payment_method as "Payment Method"
+								processed_by as "Processed By"
+								fee_cycle as "Fee Cycle"
+								description as "Description"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Section_1
+				{
+					displayname = "Dashboard"
+					icon = "ui-1-dashboard-half"
+					page DashBoard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+				}
+				section Section_2
+				{
+					displayname = "Appointments"
+					icon = "ui-1-calendar-grid-61"
+					form  appointment
+					{
+						icon = "ui-1-bold-add"
+					}
+					report appointment_Report
+					{
+						icon = "travel-world"
+					}
+					report appointment_by_appointment_status
+					{
+						icon = "location-appointment"
+					}
+				}
+				section Section_3
+				{
+					displayname = "Emergency Cases"
+					icon = "weather-hurricane-45"
+					form  emergency_case
+					{
+						icon = "ui-1-bold-add"
+					}
+					report emergency_case_Report
+					{
+						icon = "travel-world"
+					}
+					report emergency_case_by_emergency_level
+					{
+						icon = "weather-hurricane-45"
+					}
+				}
+				section Section_4
+				{
+					displayname = "Treatment Plans"
+					icon = "sport-tactic"
+					form  treatment_plan
+					{
+						icon = "ui-1-bold-add"
+					}
+					report treatment_plan_Report
+					{
+						icon = "sport-cardio"
+					}
+					report treatment_plan_by_status
+					{
+						icon = "design-2-selection"
+					}
+				}
+				section Section_5
+				{
+					displayname = "Doctors"
+					icon = "health-bag-49"
+					form  doctor
+					{
+						icon = "ui-1-bold-add"
+					}
+					report doctor_Report
+					{
+						icon = "travel-world"
+					}
+					report doctor_by_specialization
+					{
+						icon = "design-2-selection"
+					}
+				}
+				section Section_6
+				{
+					displayname = "Doctor Reviews"
+					icon = "health-bag-49"
+					form  doctor_review
+					{
+						icon = "ui-1-bold-add"
+					}
+					report doctor_review_Report
+					{
+						icon = "travel-world"
+					}
+				}
+				section Section_7
+				{
+					displayname = "Patients"
+					icon = "food-candy"
+					form  patient
+					{
+						icon = "ui-1-bold-add"
+					}
+					report patient_Report
+					{
+						icon = "travel-world"
+					}
+					report patient_by_emergency_priority
+					{
+						icon = "weather-hurricane-45"
+					}
+				}
+				section Section_8
+				{
+					displayname = "Weekly Treatment Fees"
+					icon = "shopping-cash-register"
+					form  weekly_treatment_fee
+					{
+						icon = "ui-1-bold-add"
+					}
+					report weekly_treatment_fee_Report
+					{
+						icon = "shopping-tag-sale"
+					}
+					report weekly_treatment_fee_by_payment_method
+					{
+						icon = "shopping-bitcoin"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = solid
+					show = {space,section,component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "poppins"
+			color options
+			{
+				color = "5"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form appointment
+			{
+				label placement = auto
+			}
+			form doctor
+			{
+				label placement = auto
+			}
+			form doctor_review
+			{
+				label placement = auto
+			}
+			form emergency_case
+			{
+				label placement = auto
+			}
+			form patient
+			{
+				label placement = auto
+			}
+			form treatment_plan
+			{
+				label placement = auto
+			}
+			form weekly_treatment_fee
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form appointment
+			{
+				label placement = auto
+			}
+			form doctor
+			{
+				label placement = auto
+			}
+			form doctor_review
+			{
+				label placement = auto
+			}
+			form emergency_case
+			{
+				label placement = auto
+			}
+			form patient
+			{
+				label placement = auto
+			}
+			form treatment_plan
+			{
+				label placement = auto
+			}
+			form weekly_treatment_fee
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
